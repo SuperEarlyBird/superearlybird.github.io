@@ -25,7 +25,7 @@ const style = css`
     font-size: 1.1em;
 	}
 
-	div{
+	div {
 		margin: 0 0 15px 0;
     border : none;
 	}
@@ -97,7 +97,7 @@ export default function YahooActionJapanCalculator() {
             type="text"
             id="productPrice"
             spellCheck="false"
-            placeholder="Product price (Highest bidding price)"
+            placeholder="Product price (Highest bidding price) in Yen"
             onChange={handleProductPriceChanged}
           />
         </div>
@@ -107,7 +107,7 @@ export default function YahooActionJapanCalculator() {
             type="text"
             id="shippingCost"
             spellCheck="false"
-            placeholder={`Optional, default to ${defaultShippingCost}`}
+            placeholder={`Optional, default to ${defaultShippingCost} Yen`}
             onChange={handleShippingCostChanged}
           />
           <span className="hint">Shipping cost (In Japan only), search a number in <em>配送方法と送料</em> section</span>
@@ -132,17 +132,19 @@ export default function YahooActionJapanCalculator() {
           <span className="hint">Billing fee from a provider who deliveries an item from Japan to Thailand</span>
         </div>
         <div>
-          <label htmlFor="exchangeRate">Exchange Rate (1 YEN to THB)</label>
+          <label htmlFor="exchangeRate">Exchange Rate (THB/JPY)</label>
           <input
             type="text"
             id="exchangeRate"
             spellCheck="false"
-            placeholder={`Optional, default to ${defaultExchangeRate} Yen/THB`}
+            placeholder={`Optional, default to ${defaultExchangeRate} THB/JPY`}
             onChange={handleExchangeRateChanged}
           />
         </div>
         <div>
-          Total price: ({productPrice} + {shippingCost} + {yahooAuctionFee} + {billingFee}) x {exchangeRate} = {getTotalPrice()}
+          Total price:
+          ({productPrice} + {shippingCost} + {yahooAuctionFee} + {billingFee}) x {exchangeRate} =
+          {getTotalPrice()} THB
         </div>
       </form>
     </div>
